@@ -1,0 +1,8 @@
+unset LD_PRELOAD TERMUX_VERSION TERMUX_APP_PID TERMUX_APK_RELEASE TERMUX_IS_DEBUGGABLE_BUILD TERMUX_API_VERSION
+export PATH=$PATH:/system/bin
+sleep 15
+bin/patch_system
+sleep 3
+bin/poc -c 'start-stop-daemon -b -x ~/bin/su -S -- --daemon'
+sleep 1
+bin/su -c ~/bin/root.sh
